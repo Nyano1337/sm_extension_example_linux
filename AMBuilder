@@ -23,22 +23,22 @@ else:
 
 project.sources += sourceFiles
 
-#join dependency
-binary.sources += [
-  #os.path.join(Extension.sm_root, 'public', 'CDetour', 'detours.cpp'),
-  #os.path.join(Extension.sm_root, 'public', 'asm', 'asm.c'),
-  #os.path.join(Extension.sm_root, 'public', 'libudis86', 'decode.c'),
-  #os.path.join(Extension.sm_root, 'public', 'libudis86', 'itab.c'),
-  #os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-att.c'),
-  #os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-intel.c'),
-  #os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn.c'),
-  #os.path.join(Extension.sm_root, 'public', 'libudis86', 'udis86.c'),
-]
-
 for sdk_name in Extension.sdks:
   sdk = Extension.sdks[sdk_name]
   
   binary = Extension.HL2Config(project, projectName + '.ext.' + sdk.ext, sdk)
+  
+  #join dependency
+  binary.sources += [
+    #os.path.join(Extension.sm_root, 'public', 'CDetour', 'detours.cpp'),
+    #os.path.join(Extension.sm_root, 'public', 'asm', 'asm.c'),
+    #os.path.join(Extension.sm_root, 'public', 'libudis86', 'decode.c'),
+    #os.path.join(Extension.sm_root, 'public', 'libudis86', 'itab.c'),
+    #os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-att.c'),
+    #os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-intel.c'),
+    #os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn.c'),
+    #os.path.join(Extension.sm_root, 'public', 'libudis86', 'udis86.c'),
+  ]
 
   if sys.platform == 'win32':
     binary.compiler.postlink += [ 'legacy_stdio_definitions.lib' ]
